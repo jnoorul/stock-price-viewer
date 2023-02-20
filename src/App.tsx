@@ -1,8 +1,13 @@
+import { Header } from './Header/Header';
+import { SearchBar } from './SearchBar/SearchBar';
 
 function App() {
   return (
     <div>
-      <h3 className=" text-red-700">Welcome to Stock Price Viewer</h3>
+      <Header />
+      <div className="m-4">
+        <SearchBar />
+      </div>
     </div>
   );
 }
