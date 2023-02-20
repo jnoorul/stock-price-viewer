@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { getStocks } from '../../api/search';
 
 interface SearchResultsProps {
@@ -7,18 +6,7 @@ interface SearchResultsProps {
 }
 
 export function SearchResults({ searchText, onSelect }: SearchResultsProps) {
-  const [showResults, setShowResults] = useState(true);
-
-  const handleStockSelect = (ticker: string) => {
-    setShowResults(false);
-    onSelect(ticker);
-  };
-
-  useEffect(() => {
-    setShowResults(true);
-  }, [searchText]);
-
-  if (searchText.trim().length <= 1 || !showResults) {
+  if (searchText.trim().length <= 1) {
     return <></>;
   }
   const stockResults = getStocks(searchText);
@@ -28,7 +16,7 @@ export function SearchResults({ searchText, onSelect }: SearchResultsProps) {
         <li
           key={stock.ticker}
           className="p-2 border bg-white cursor-pointer"
-          onClick={() => handleStockSelect(stock.ticker)}
+          onClick={() => onSelect(stock.ticker)}
         >
           <div className="text-gray-500 text-xs font-semibold">{`Ticker: ${stock.ticker}`}</div>
           <div className="mt-1 text-sm text-secondary-900 font-semibold">

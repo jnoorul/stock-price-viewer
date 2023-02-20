@@ -8,6 +8,11 @@ interface SearchBarProps {
 export function SearchBar({ onSelect }: SearchBarProps) {
   const [searchText, setSearchText] = useState('');
 
+  const handleSelect = (ticker: string) => {
+    setSearchText('');
+    onSelect(ticker);
+  };
+
   return (
     <div>
       <input
@@ -18,7 +23,7 @@ export function SearchBar({ onSelect }: SearchBarProps) {
         value={searchText}
         onChange={(event) => setSearchText(event.currentTarget.value)}
       />
-      <SearchResults searchText={searchText} onSelect={onSelect} />
+      <SearchResults searchText={searchText} onSelect={handleSelect} />
     </div>
   );
 }
