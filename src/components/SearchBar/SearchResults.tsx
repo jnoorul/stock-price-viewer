@@ -15,7 +15,7 @@ export function SearchResults({ searchText }: SearchResultsProps) {
   }
   const stockResults = getStocks(searchText);
   return (
-    <div>
+    <div className="mt-1 border-2 inset-x-0 overflow-y-auto z-50 max-h-96 rounded-md lg:rounded-lg">
       {stockResults.map((stock) => (
         <StockResultCard stock={stock} />
       ))}
@@ -25,9 +25,11 @@ export function SearchResults({ searchText }: SearchResultsProps) {
 
 export function StockResultCard({ stock }: { stock: Stock }) {
   return (
-    <div>
-      <label>{stock.ticker}</label>
-      <label>{stock.name}</label>
+    <div className="p-2 border-b-2 bg-white cursor-pointer">
+      <div className="text-gray-500 text-xs font-semibold">{`Ticker: ${stock.ticker}`}</div>
+      <div className="mt-1 text-sm text-secondary-900 font-semibold">
+        {stock.name}
+      </div>
     </div>
   );
 }
