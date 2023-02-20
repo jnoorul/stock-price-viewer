@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Section } from './components/common/Section';
 import { Header } from './components/Header/Header';
 import { SearchBar } from './components/SearchBar/SearchBar';
 import { StockPrice } from './components/StockPrice/StockPrice';
@@ -11,10 +12,10 @@ function App() {
   return (
     <div>
       <Header />
-      <div className="m-4">
+      <Section>
         <SearchBar onSelect={handleStockSelect} />
-      </div>
-      <div className="m-4">{ticker && <StockPrice ticker={ticker} />}</div>
+      </Section>
+      <Section>{ticker && <StockPrice ticker={ticker} />}</Section>
     </div>
   );
 }
