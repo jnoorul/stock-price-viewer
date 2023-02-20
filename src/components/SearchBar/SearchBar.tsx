@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import { SearchResults } from './SearchResults';
 
-export function SearchBar() {
+interface SearchBarProps {
+  onSelect: (ticker: string) => void;
+}
+
+export function SearchBar({ onSelect }: SearchBarProps) {
   const [searchText, setSearchText] = useState('');
 
   return (
@@ -14,7 +18,7 @@ export function SearchBar() {
         value={searchText}
         onChange={(event) => setSearchText(event.currentTarget.value)}
       />
-      <SearchResults searchText={searchText} />
+      <SearchResults searchText={searchText} onSelect={onSelect} />
     </div>
   );
 }
