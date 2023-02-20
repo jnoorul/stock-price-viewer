@@ -14,9 +14,7 @@ function App() {
       <div className="m-4">
         <SearchBar onSelect={handleStockSelect} />
       </div>
-      <div className="m-4">
-        <StockPrice ticker={ticker} />
-      </div>
+      <div className="m-4">{ticker && <StockPrice ticker={ticker} />}</div>
     </div>
   );
 }
