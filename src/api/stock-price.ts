@@ -15,10 +15,9 @@ export async function getStockPrice(ticker: string, useMock: boolean = true) {
   if (useMock) {
     return mapData(mockPrices);
   }
-  const stockPrice = (await fetch(
-    `http://api.marketstack.com/v1/eod?access_key=c30a2b6f5c6f2e221b1bb09dda421fdb&symbols=${ticker}`
-  ).then((res) => res.json())) as unknown as StockPriceResponse;
-  return mapData(stockPrice.data);
+  // fetch from real api here
+  // const stockPrice = (await fetch(``).then((res) => res.json())) as unknown as StockPriceResponse;
+  // return mapData(stockPrice.data);
 }
 
 function mapData(prices: Price[]) {
