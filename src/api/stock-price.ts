@@ -22,7 +22,7 @@ export async function getStockPrice(ticker: string, useMock: boolean = true) {
 }
 
 function mapData(prices: Price[]) {
-  return prices.map((price: Price) => ({
+  return prices.slice(0, 8).map((price: Price) => ({
     open: price.open,
     close: price.close,
     high: price.high,
